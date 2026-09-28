@@ -1,0 +1,110 @@
+.auth-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 44fr) minmax(0, 56fr);
+  min-height: 100dvh;
+  background: var(--surface);
+}
+.brand-panel {
+  background: #193858;
+  color: white;
+  padding: 48px clamp(32px, 5vw, 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 48px;
+}
+.brand-panel .brand {
+  color: white;
+}
+.brand-panel .brand-dot {
+  color: #b9cce4;
+}
+.brand-copy h2 {
+  font-size: clamp(30px, 3vw, 44px);
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+.brand-copy p {
+  color: #d4dfed;
+  max-width: 37ch;
+}
+.brand-copy a {
+  color: white;
+}
+.brand-panel small {
+  color: #d4dfed;
+}
+.brand-copy .eyebrow {
+  color: #b9cce4;
+}
+.form-panel {
+  display: grid;
+  place-items: center;
+  padding: 48px;
+}
+.auth-form {
+  width: 100%;
+  max-width: 400px;
+}
+.intro {
+  margin-bottom: 32px;
+}
+.field {
+  margin-bottom: 20px;
+}
+.field small {
+  margin-top: 6px;
+}
+.password {
+  position: relative;
+}
+.password input {
+  padding-right: 64px;
+}
+.reveal {
+  position: absolute;
+  right: 4px;
+  top: 0;
+  bottom: 0;
+  width: 54px;
+  padding: 0 10px;
+  border: 0;
+  background: transparent;
+  color: var(--primary);
+  font-size: 12px;
+}
+.submit {
+  width: 100%;
+  min-height: var(--control-height);
+  margin-top: 4px;
+}
+.switch {
+  margin-top: 24px;
+  font-size: 13px;
+}
+@media (max-width: 767px) {
+  .auth-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+  .brand-panel {
+    padding: 24px;
+  }
+  .brand-copy,
+  .brand-panel > small {
+    display: none;
+  }
+  .form-panel {
+    padding: 40px 24px;
+    align-items: start;
+  }
+  .auth-form {
+    max-width: 440px;
+  }
+}
+
+// Suppress the browser reveal button; the labeled text control is the only toggle.
+.password input::-ms-reveal,
+.password input::-ms-clear {
+  display: none;
+}

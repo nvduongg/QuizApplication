@@ -1,0 +1,142 @@
+<a class="page-back" [routerLink]="['/app/question-banks', id]"
+  ><app-icon name="back" />{{ bank()?.name || 'Question bank' }}</a
+>
+<div class="page-heading">
+  <h1>Import questions</h1>
+  <p>Add multiple questions to this question bank from an Excel file.</p>
+</div>
+@if (loading()) {
+  <p class="loading" role="status">Loading question bank…</p>
+} @else if (loadError()) {
+  <div class="state" role="alert">
+    <p>{{ loadError() }}</p>
+    <button class="button secondary" (click)="load()">Retry</button>
+  </div>
+} @else if (!owned()) {
+  <p class="notice">You can only import questions into your own question banks.</p>
+} @else if (result(); as result) {
+  <section aria-labelledby="import-complete">
+    <h2 id="import-complete" tabindex="-1">Import complete</h2>
+    <p role="status">
+      {{ result.importedCount | countLabel: 'question' }} imported ·
+      {{ result.skippedCount | countLabel: 'row' }} skipped
+    </p>
+    <p>The imported questions are now available in {{ bank()?.name }}.</p>
+    <a class="button" [routerLink]="['/app/question-banks', id]">Back to question bank</a>
+    @if (result.errors.length) {
+      <h3 class="errors-heading">Skipped rows</h3>
+      <ul class="summary-errors">
+        @for (error of result.errors; track $index) {
+          <li>
+            <strong>Row {{ error.rowNumber }}:</strong> {{ error.message }}
+          </li>
+        }
+      </ul>
+    }
+  </section>
+} @else {
+  <section class="upload" aria-label="Excel file">
+    <p>
+      Use the Quizizi. Excel template for Single Choice, Multiple Choice and True / False questions.
+      Up to {{ rowLimit }} questions, 5 MB.
+    </p>
+    <div class="file-actions">
+      <button
+        class="button secondary"
+        (click)="downloadTemplate()"
+        [disabled]="downloading() || importing()"
+      >
+        {{ downloading() ? 'Downloading…' : 'Download Excel template' }}
+      </button>
+      <div class="file-control">
+        <label class="button secondary" for="excel-file">{{
+          file() ? 'Replace file' : 'Select Excel file'
+        }}</label>
+        <input
+          id="excel-file"
+          class="file-input"
+          type="file"
+          accept=".xlsx"
+          (change)="select($event)"
+          [disabled]="importing()"
+          [attr.aria-invalid]="!!error()"
+          aria-describedby="file-guidance import-error"
+        />
+      </div>
+      @if (file(); as file) {
+        <span class="selected-file"
+          >{{ file.name }} <small>· {{ fileSize() }}</small></span
+        >
+        <button class="text-button" (click)="reset()" [disabled]="importing()">Remove</button>
+      }
+    </div>
+    @if (downloadError()) {
+      <p class="error" role="alert">{{ downloadError() }}</p>
+    }
+    <small id="file-guidance"
+      >Replace the template examples with your questions. Preview checks the file before anything is
+      added.</small
+    >
+    @if (!preview()) {
+      <button class="button preview-button" (click)="previewFile()" [disabled]="!file() || busy()">
+        {{ previewing() ? 'Checking file…' : 'Preview import' }}
+      </button>
+    }
+  </section>
+  @if (previewing()) {
+    <p role="status">Checking rows and answers…</p>
+  }
+  @if (error()) {
+    <p id="import-error" class="error" role="alert">{{ error() }}</p>
+  }
+  @if (uncertain()) {
+    <p class="notice">
+      The response was interrupted. Check your question bank before trying again: another import
+      could create duplicate questions.
+    </p>
+  }
+  @if (rowErrors().length) {
+    <ul class="summary-errors">
+      @for (error of rowErrors(); track $index) {
+        <li>
+          <strong>Row {{ error.rowNumber }}:</strong> {{ error.message }}
+        </li>
+      }
+    </ul>
+  }
+  @if (preview(); as preview) {
+    <section aria-labelledby="preview-heading">
+      <h2 id="preview-heading">Import preview</h2>
+      <p class="preview-counts" role="status">
+        <span>{{ preview.totalRows | countLabel: 'row' }} found</span
+        ><span>{{ preview.validRows }} ready to import</span
+        ><span>{{ preview.invalidRows }} need attention</span>
+      </p>
+      @if (preview.canImport) {
+        <div class="import-policy">
+          <p>
+            {{ preview.validRows | countLabel: 'question' }} will be imported.
+            {{ preview.invalidRows | countLabel: 'invalid row' }} will be skipped.
+          </p>
+          <button class="button" (click)="importFile()" [disabled]="busy()">
+            {{
+              importing()
+                ? 'Importing…'
+                : 'Import ' +
+                  preview.validRows +
+                  (preview.validRows === 1 ? ' question' : ' questions')
+            }}
+          </button>
+        </div>
+      } @else {
+        <p class="notice">
+          No questions are ready to import. Fix the workbook and replace the file to preview again.
+        </p>
+      }
+      @if (importing()) {
+        <p role="status">Adding questions. Keep this page open until the import finishes.</p>
+      }
+      <app-import-preview [rows]="preview.rows" />
+    </section>
+  }
+}

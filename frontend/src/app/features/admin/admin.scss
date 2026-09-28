@@ -1,0 +1,47 @@
+:host {
+  display: block;
+}
+.table-wrap {
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+  text-align: left;
+}
+th {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+}
+th,
+td {
+  padding: 16px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+th:first-child,
+td:first-child {
+  padding-left: 0;
+}
+th:last-child,
+td:last-child {
+  padding-right: 0;
+}
+td:first-child {
+  max-width: 360px;
+  overflow-wrap: anywhere;
+}
+td a {
+  font-weight: 600;
+  text-decoration: none;
+}
+td a:hover {
+  text-decoration: underline;
+}
+.row-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}

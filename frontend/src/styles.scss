@@ -1,0 +1,245 @@
+@use './styles/tokens';
+@use './styles/authoring';
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font: 14px/1.6 var(--font);
+}
+button,
+input {
+  font: inherit;
+}
+button,
+a,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+a {
+  color: var(--primary);
+  text-underline-offset: 4px;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  letter-spacing: normal;
+  margin: 0 0 12px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+}
+h2 {
+  font-size: 21px;
+}
+p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: var(--control-height);
+  padding: 8px 16px;
+  background: var(--primary);
+  color: white;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20px;
+}
+.button:hover {
+  background: var(--primary-hover);
+}
+.secondary {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.secondary:hover {
+  background: var(--surface-subtle);
+}
+.text-button {
+  min-height: var(--control-height);
+  font-size: 13px;
+  background: none;
+  border: 0;
+  color: var(--primary);
+  padding: 8px;
+}
+.brand {
+  display: inline-block;
+  font-family: var(--font);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.brand-dot {
+  color: var(--primary);
+}
+@media (min-width: 960px) {
+  .desktop-sidebar .brand,
+  .workspace h1 {
+    text-box-trim: trim-start;
+    text-box-edge: cap alphabetic;
+  }
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+.page-heading {
+  margin-bottom: 32px;
+  max-width: var(--reading-width);
+}
+.page-heading > p:last-child {
+  margin-bottom: 0;
+  max-width: 64ch;
+}
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+input,
+select,
+textarea {
+  font: inherit;
+  width: 100%;
+  height: var(--control-height);
+  padding: 8px 12px;
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  background: var(--surface);
+}
+input[aria-invalid='true'],
+select[aria-invalid='true'],
+textarea[aria-invalid='true'] {
+  border-color: var(--danger);
+}
+small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+.field-error {
+  color: var(--danger);
+}
+.field-error:empty {
+  display: none;
+}
+.error,
+.notice {
+  border-left: 3px solid var(--danger);
+  padding: 12px 16px;
+  background: var(--surface);
+  color: var(--danger);
+  border-radius: 4px;
+}
+.notice {
+  border-color: var(--primary);
+  color: var(--text);
+}
+.loading {
+  padding: 24px 0;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+.state {
+  padding: var(--space-6) 0;
+  border-block: 1px solid var(--border);
+  grid-column: 1/-1;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+@media (max-width: 599px) {
+  h1 {
+    font-size: 27px;
+  }
+  .page-heading {
+    margin-bottom: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+
+.reading-page {
+  display: block;
+  max-width: var(--reading-width);
+}
+.page-back:hover {
+  text-decoration: underline;
+}
+textarea {
+  height: auto;
+  min-height: 100px;
+  resize: vertical;
+}
+input:disabled,
+select:disabled,
+textarea:disabled {
+  color: var(--muted);
+  border-color: var(--border);
+  background: transparent;
+  cursor: not-allowed;
+}
+input[type='radio'],
+input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  accent-color: var(--primary);
+}
+.text-button.danger-button {
+  color: var(--danger);
+}
+.state > :last-child {
+  margin-bottom: 0;
+}

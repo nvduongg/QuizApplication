@@ -1,0 +1,40 @@
+// Quiz/question answer choices only; ordinary form controls are not affected.
+@mixin row {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  align-items: center;
+  align-content: center;
+  gap: 8px 12px;
+  min-width: 0;
+  line-height: 1.6;
+}
+
+@mixin control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: start;
+  width: 18px;
+  height: 1lh;
+  flex-shrink: 0;
+  margin: 0;
+  line-height: inherit;
+
+  > input,
+  > .selection {
+    flex: 0 0 16px;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+  }
+}
+
+@mixin content {
+  min-width: 0;
+  margin: 0;
+  line-height: inherit;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}

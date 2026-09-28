@@ -1,0 +1,64 @@
+@use '../../../styles/answer-options' as answers;
+
+.draft-answer {
+  @include answers.row;
+  grid-template-columns: 18px minmax(0, 1fr) auto;
+  margin-bottom: 12px;
+}
+.answer-control {
+  @include answers.control;
+}
+.draft-answer:has(.answer-input) .answer-control {
+  align-self: center;
+}
+.answer-content {
+  @include answers.content;
+  font-size: inherit;
+  font-weight: inherit;
+}
+.answer-input {
+  min-width: 0;
+}
+.answer-input input {
+  width: 100%;
+}
+.answer-input small:empty {
+  display: none;
+}
+
+:host {
+  display: block;
+}
+.creation-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px;
+}
+.question-configuration,
+.draft-answers {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+.draft-answers legend {
+  float: left;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.draft-answers > p {
+  clear: both;
+}
+@media (max-width: 800px) {
+  .creation-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .draft-answer {
+    grid-template-columns: 18px minmax(0, 1fr);
+  }
+  .draft-answer > button {
+    grid-column: 2;
+    justify-self: start;
+  }
+}

@@ -1,0 +1,20 @@
+# Build, test and publish output
+bin/
+obj/
+TestResults/
+coverage/
+publish/
+*.log
+
+# Local IDE state
+.vs/
+*.csproj.user
+*.suo
+
+# Local credentials and generated integration results
+.env
+.env.*
+!.env.example
+!.env.*.example
+appsettings.Local.json
+Development/*-results*.json

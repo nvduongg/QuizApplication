@@ -1,0 +1,25 @@
+# Generated output in active and retained project trees
+**/bin/
+**/obj/
+**/node_modules/
+**/dist/
+**/.angular/
+**/coverage/
+**/TestResults/
+**/.verification/
+**/publish/
+**/.vs/
+*.csproj.user
+*.suo
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Secrets; example configuration remains eligible for version control
+.env
+.env.*
+!.env.example
+!.env.*.example
+**/appsettings.Local.json
+backend/Development/*-results*.json

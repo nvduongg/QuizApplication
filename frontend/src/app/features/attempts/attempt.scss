@@ -1,0 +1,76 @@
+@use '../../../styles/answer-options' as answers;
+
+:host {
+  display: block;
+  max-width: var(--reading-width);
+}
+.progress-row,
+.attempt-actions,
+.nav-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.progress-row p {
+  margin: 0;
+  font-size: 13px;
+}
+.attempt-timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+}
+.attempt-timer strong {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.attempt-timer.warning {
+  color: #805b20;
+}
+.attempt-timer.urgent {
+  color: var(--danger);
+}
+progress {
+  width: 100%;
+  height: 6px;
+  accent-color: var(--primary);
+  margin: 12px 0 28px;
+}
+.taking-question {
+  margin-bottom: 24px;
+}
+.taking-question h2 {
+  white-space: pre-wrap;
+}
+.metadata {
+  font-size: 13px;
+}
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.answer-option {
+  @include answers.row;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+.answer-control {
+  @include answers.control;
+}
+.answer-content {
+  @include answers.content;
+}
+.clear-answer {
+  padding-inline: 0;
+}
+.draft-note {
+  margin-top: 24px;
+}

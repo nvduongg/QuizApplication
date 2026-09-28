@@ -1,0 +1,124 @@
+@use '../question-banks/content';
+.quiz-summary {
+  margin: 0 0 12px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 13px;
+}
+.sequence {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--muted);
+  width: 24px;
+  flex-shrink: 0;
+}
+.builder-row {
+  align-items: flex-start;
+}
+.builder-row .row-actions {
+  max-width: 330px;
+  justify-content: flex-end;
+}
+.points-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.points-form input {
+  width: 100px;
+}
+.points-form label {
+  margin: 0;
+}
+.order-control {
+  padding-inline: 12px;
+}
+.picker-filters {
+  display: grid;
+  grid-template-columns: minmax(200px, 300px) minmax(240px, 380px);
+  gap: 16px;
+  margin: 24px 0;
+}
+.picker-search {
+  display: flex;
+  gap: 8px;
+}
+.picker-search input {
+  min-width: 0;
+  width: 100%;
+}
+@media (max-width: 800px) {
+  .picker-filters {
+    grid-template-columns: 1fr;
+  }
+}
+
+.picker-choice {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0;
+  font-size: 14px;
+}
+.picker-choice input {
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.picker-choice .row-copy {
+  font-weight: 400;
+}
+.picker-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+.picker-actions p {
+  margin: 0;
+}
+.selection-note {
+  font-size: 12px;
+}
+@media (max-width: 599px) {
+  .builder-row .row-actions {
+    max-width: none;
+    justify-content: flex-start;
+  }
+  .builder-row {
+    position: relative;
+    padding-left: 32px;
+  }
+  .builder-row .sequence {
+    position: absolute;
+    left: 0;
+    top: 20px;
+  }
+
+  .picker-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .picker-search input {
+    min-width: 0;
+  }
+  .points-form input {
+    width: 88px;
+  }
+}
+
+.just-added {
+  border-inline-start: 3px solid var(--primary, #2563eb);
+  padding-inline-start: 12px;
+}
+.question-authoring-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0 20px;
+}

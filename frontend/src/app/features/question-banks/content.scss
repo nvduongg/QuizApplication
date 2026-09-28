@@ -1,0 +1,147 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.toolbar,
+.row-actions,
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.toolbar {
+  justify-content: space-between;
+  margin: 24px 0;
+}
+.toolbar h2 {
+  margin: 0;
+}
+.content-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--border);
+}
+.content-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+.row-copy {
+  min-width: 0;
+  flex: 1;
+}
+.row-copy h2,
+.row-copy h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+.row-copy p {
+  font-size: 13px;
+  margin-bottom: 8px;
+  white-space: pre-wrap;
+}
+.row-copy a {
+  text-decoration: none;
+  color: var(--text);
+}
+.row-copy a:hover {
+  text-decoration: underline;
+}
+.metadata {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--muted);
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: nowrap;
+  color: var(--text);
+  background: var(--surface-subtle);
+}
+.focused-form {
+  max-width: 640px;
+  margin: 24px 0;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+}
+.field {
+  margin-bottom: 20px;
+}
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 32px;
+}
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0 0 20px;
+  min-width: 0;
+}
+legend {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.form-actions {
+  margin-top: 24px;
+}
+.danger-button {
+  color: var(--danger);
+}
+.feedback {
+  color: var(--primary);
+  margin: 16px 0;
+}
+.back {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-size: 13px;
+}
+.answers {
+  border-top: 1px solid var(--border);
+  margin-top: 32px;
+  padding-top: 8px;
+}
+.correct-mark {
+  font-size: 16px;
+  margin-right: 6px;
+  color: var(--primary);
+}
+@media (max-width: 599px) {
+  .content-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .row-actions {
+    width: 100%;
+  }
+  .focused-form {
+    margin-top: 16px;
+  }
+  .toolbar {
+    align-items: flex-start;
+  }
+  .content-row .button {
+    padding-inline: 12px;
+  }
+}

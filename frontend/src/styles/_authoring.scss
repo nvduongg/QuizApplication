@@ -1,0 +1,250 @@
+@use 'answer-options' as answers;
+
+.has-page-back {
+  position: relative;
+}
+.page-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  text-decoration: none;
+  margin-bottom: var(--space-4);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.bank-row-link {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  padding: 20px 12px;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.bank-row-link:hover {
+  background: var(--surface-subtle);
+}
+.bank-row-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+.bank-row-link .row-copy {
+  min-width: 0;
+  flex: 1;
+}
+.bank-row-link h2 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+.bank-row-link p {
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+.action-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--control-height);
+  padding: 8px 10px;
+  font-size: 13px;
+  text-decoration: none;
+  gap: 8px;
+}
+.editor-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+.workspace .editor-grid > .focused-form {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.workspace .editor-grid > .focused-form > h2 {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  margin: 0 0 16px;
+}
+.editor-grid .answer-panel {
+  min-width: 0;
+}
+.editor-grid .answer-panel .answers {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.editor-grid .answer-panel .toolbar {
+  margin: 0 0 16px;
+  min-height: 40px;
+}
+.editor-grid .answer-panel .content-row {
+  padding: 12px 0;
+  gap: 12px;
+}
+.editor-grid .answer-panel .focused-form {
+  margin: 16px 0 0;
+  padding: 16px 0 0;
+  max-width: none;
+}
+.editor-grid .answer-panel .answer-choice {
+  @include answers.row;
+  margin: 0;
+  min-height: 40px;
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+.answer-choice .answer-control {
+  @include answers.control;
+}
+.answer-choice .answer-content {
+  @include answers.content;
+}
+.editor-grid .answer-panel .row-actions {
+  gap: 0;
+  width: auto;
+  flex-shrink: 0;
+}
+.editor-grid .answer-panel .answer-hint {
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+.editor-grid .question-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+}
+@media (min-width: 1150px) {
+  .editor-grid {
+    grid-template-columns: minmax(0, 46fr) minmax(0, 54fr);
+    gap: 32px;
+  }
+  .editor-grid .answer-panel {
+    padding-left: 16px;
+  }
+}
+@media (max-width: 1149px) {
+  .editor-grid .answer-panel {
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+}
+@media (max-width: 599px) {
+  .editor-grid .answer-panel .content-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .editor-grid .answer-panel .row-actions {
+    margin-left: 28px;
+  }
+  .bank-row-link {
+    padding-inline: 4px;
+  }
+}
+
+.builder-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.builder-header .page-heading {
+  margin-bottom: 0;
+  min-width: 0;
+}
+.builder-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.builder-actions .row-actions {
+  gap: 8px;
+}
+@media (max-width: 1149px) {
+  .builder-header {
+    flex-direction: column;
+  }
+  .builder-actions {
+    justify-content: flex-start;
+  }
+}
+
+.workspace .bank-workspace .page-back {
+  margin: 0 0 16px;
+}
+.workspace .bank-workspace .bank-heading {
+  max-width: none;
+  margin: 0;
+}
+.workspace .page-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+.workspace .page-title-row > h1 {
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  line-height: 1.25;
+  letter-spacing: normal;
+  // Preserve the full line box, overriding desktop heading trimming.
+  text-box-trim: none;
+}
+.workspace .bank-workspace .bank-heading p {
+  margin: 8px 0 0;
+  max-width: 75ch;
+}
+.workspace .bank-workspace .bank-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 24px 0;
+}
+.workspace .bank-workspace .bank-questions {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+.workspace .bank-workspace .bank-questions > h2 {
+  margin: 0 0 20px;
+}
+.workspace .bank-workspace .bank-empty {
+  border-block: 1px solid var(--border);
+  padding: 24px 0;
+}
+.workspace .bank-workspace .bank-empty h3 {
+  margin: 0 0 8px;
+}
+.workspace .bank-workspace .bank-empty p {
+  margin: 0;
+}
+.workspace .bank-workspace .bank-create {
+  max-width: 600px;
+  padding: 24px 0 0;
+  margin: 0;
+}
+.workspace .bank-workspace .bank-create .field {
+  margin-bottom: 16px;
+}
+.workspace .bank-workspace .bank-create .form-actions {
+  margin-top: 16px;
+}
+
+.workspace .bank-workspace .danger-button {
+  color: var(--danger);
+}
